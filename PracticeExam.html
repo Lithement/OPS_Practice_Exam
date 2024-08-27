@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Image Slideshow</title>
+    <title>Iframe Image Slideshow with Fade Effect</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,15 +16,23 @@
         }
         .slideshow-container {
             position: relative;
+            width: 100%;
+            max-width: 800px;
             height: 250px;
             border: 1px solid #ddd;
             overflow: hidden;
             border-radius: 8px;
         }
-        img {
+        .fade-slide {
+            position: absolute;
             width: 100%;
             height: 100%;
-            border: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .fade-slide.active {
+            opacity: 1;
+            z-index: 1;
         }
         .prev, .next {
             cursor: pointer;
@@ -39,6 +47,7 @@
             transition: 0.6s ease;
             border-radius: 0 3px 3px 0;
             user-select: none;
+            z-index: 2;
         }
         .next {
             right: 0;
@@ -55,37 +64,36 @@
 <body>
 
 <div class="slideshow-container">
-    <img id="slideImage" src="https://i.imgur.com/1vCKsuA.png" alt="Slideshow Image">
+    <img class="fade-slide active" src="https://i.imgur.com/1vCKsuA.png" alt="Slideshow Image">
+    <img class="fade-slide" src="https://i.imgur.com/rNZaCPC.png" alt="Slideshow Image">
+    <img class="fade-slide" src="https://i.imgur.com/Z7zF63j.png" alt="Slideshow Image">
+    <img class="fade-slide" src="https://i.imgur.com/CzCQbFl.png" alt="Slideshow Image">
+    <img class="fade-slide" src="https://i.imgur.com/vpNDXL0.png" alt="Slideshow Image">
+    <img class="fade-slide" src="https://i.imgur.com/WRJj7lX.png" alt="Slideshow Image">
     <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="next" onclick="changeSlide(1)">&#10095;</a>
 </div>
 
 <script>
     var slideIndex = 0;
-    var slides = [
-        "https://i.imgur.com/1vCKsuA.png",
-        "https://i.imgur.com/rNZaCPC.png",
-        "https://i.imgur.com/Z7zF63j.png",
-        "https://i.imgur.com/CzCQbFl.png",
-        "https://i.imgur.com/vpNDXL0.png",
-        "https://i.imgur.com/WRJj7lX.png"
-    ];
+    var slides = document.getElementsByClassName("fade-slide");
 
     function changeSlide(direction) {
+        slides[slideIndex].classList.remove("active");
         slideIndex += direction;
         if (slideIndex >= slides.length) {
             slideIndex = 0;
         } else if (slideIndex < 0) {
             slideIndex = slides.length - 1;
         }
-        document.getElementById("slideImage").src = slides[slideIndex];
+        slides[slideIndex].classList.add("active");
     }
 
     function autoSlide() {
         changeSlide(1);
     }
 
-    setInterval(autoSlide, 5000); // Change slide every 5 seconds
+    setInterval(autoSlide, 10000); // Change slide every 10 seconds
 </script>
 
 </body>
