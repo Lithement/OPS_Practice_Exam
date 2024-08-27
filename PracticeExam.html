@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iframe Slideshow</title>
+    <title>Iframe Image Slideshow</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,7 @@
             overflow: hidden;
             border-radius: 8px;
         }
-        iframe {
+        img {
             width: 100%;
             height: 100%;
             border: none;
@@ -56,7 +56,7 @@
 <body>
 
 <div class="slideshow-container">
-    <iframe id="slideFrame" src="https://www.example.com"></iframe>
+    <img id="slideImage" src="https://i.imgur.com/1vCKsuA.png" alt="Slideshow Image">
     <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="next" onclick="changeSlide(1)">&#10095;</a>
 </div>
@@ -64,9 +64,12 @@
 <script>
     var slideIndex = 0;
     var slides = [
-        "https://www.example.com",
-        "https://www.another-example.com",
-        "https://www.yet-another-example.com"
+        "https://i.imgur.com/1vCKsuA.png",
+        "https://i.imgur.com/rNZaCPC.png",
+        "https://i.imgur.com/Z7zF63j.png",
+        "https://i.imgur.com/CzCQbFl.png",
+        "https://i.imgur.com/vpNDXL0.png",
+        "https://i.imgur.com/WRJj7lX.png"
     ];
 
     function changeSlide(direction) {
@@ -76,8 +79,14 @@
         } else if (slideIndex < 0) {
             slideIndex = slides.length - 1;
         }
-        document.getElementById("slideFrame").src = slides[slideIndex];
+        document.getElementById("slideImage").src = slides[slideIndex];
     }
+
+    function autoSlide() {
+        changeSlide(1);
+    }
+
+    setInterval(autoSlide, 5000); // Change slide every 5 seconds
 </script>
 
 </body>
