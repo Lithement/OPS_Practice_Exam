@@ -1,424 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<title>Practice Exam</title>
-<style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 5%;
-      background-color: #b7c6f2; /* WWU's primary color */
-      color: #FFFFFF; /* White text for better contrast */
-    }
-    h1 {
-      color: #1A4C8B; /* WWU's secondary color */
-      text-align: center;
-      padding: 20px;
-    }
-    .question {
-      background-color: #FFFFFF; /* White background for questions */
-      color: #333333; /* Dark text for questions */
-      padding: 15px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-    .question-header {
-      font-weight: bold;
-      text-decoration: underline;
-      margin-bottom: 10px;
-    }
-    .answer {
-      display: block;
-      margin-left: 20px;
-      margin-top: 5px;
-    }
-    button {
-      background-color: #1A4C8B; /* WWU's secondary color */
-      color: #FFFFFF;
-      border: none;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 4px 2px;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    button:hover {
-      background-color: #3E7CB1; /* A lighter shade for hover effect */
-    }
-    .correct {
-      color: green;
-    }
-    .incorrect {
-      color: red;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Button</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .custom-button {
+            background-color: #0056b3;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .custom-button:hover {
+            background-color: #004494;
+        }
+    </style>
 </head>
 <body>
-
-<h1>OPS 461 Final Exam</h1>
-    <h3>Add me on LinkedIn:</h3>
-    <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="dark" data-type="VERTICAL" data-vanity="michaelfurwa" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/michaelfurwa?trk=profile-badge">Michael Furwa</a></div>
-        <h3> </h3>          
-<form id="exam-form">
- 
-</form>
-<button onclick="checkAnswers()">Submit Exam</button>
-<button onclick="location.reload()">Retake Exam</button>
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-<script>
-const questions = [
-  {
-    text: "Which of the following is not one of the five stages in the team development model?",
-    options: ["Forming", "Storming", "Crashing", "Adjourning", "Norming"],
-    correct: "Crashing"
-  },
-  {
-    text: "The Abilene Paradox refers to:",
-    options: ["Agile project management", "A method to improve project performance", "Mob mentality", "Managing by wandering around", "Norming"],
-    correct: "Mob mentality"
-  },
-  {
-    text: "Advantages of a long-term process include:",
-    options: ["Reduced innovation", "Increased administrative costs", "Improved performance", "Decreased utilization of resources", "Enhanced communication"],
-    correct: "Improved performance"
-  },
-  {
-    text: "Agile Project Management is characterized by:",
-    options: ["Large team collaboration", "Best for projects with stable requirements", "Iterative and incremental development", "All of the above", "None of the above"],
-    correct: "All of the above"
-  },
-  {
-    text: "Case Study 4.1 involving Lukas and Anne is an example of:",
-    options: ["Critical path management", "Scope creep", "Project crashing", "Effective project management", "Gantt chart utilization"],
-    correct: "Scope creep"
-  },
-  {
-    text: "Managing by wandering around (MBWA) is associated with:",
-    options: ["Earned value calculations", "Direct costs", "Tom Bray in Case Study 10.2", "Scope creep", "Agile Project Management"],
-    correct: "Tom Bray in Case Study 10.2"
-  },
-  {
-    text: "Characteristics of an effective project manager include:",
-    options: ["Being indirect in providing feedback", "Lacking change control", "Effective communication and leadership", "Avoiding user involvement early in the project", "Implementing Six Sigma"],
-    correct: "Effective communication and leadership"
-  },
-  {
-    text: "Crashing a project refers to:",
-    options: ["Delaying project schedules", "Shortening project schedules", "Increasing project costs", "Reducing project scope", "Gantt chart creation"],
-    correct: "Shortening project schedules"
-  },
-  {
-    text: "The critical path in a project is:",
-    options: ["The shortest path to project completion", "The path with the most slack", "The longest path to project completion", "The path with the least resources", "A part of the PERT technique"],
-    correct: "The longest path to project completion"
-  },
-  {
-    text: "Organizational culture includes:",
-    options: ["Physical layout and attire", "Project schedules and costs", "Critical paths and slack paths", "Direct and indirect costs", "Communication and collaboration"],
-    correct: "Communication and collaboration"
-  },
-  {
-    text: "A program is defined as:",
-    options: ["A temporary endeavor to create a unique product", "Managing unrelated projects independently", "Group of related projects to achieve a common goal", "Temporary non-repetitive activities", "Continuous operational tasks"],
-    correct: "Group of related projects to achieve a common goal"
-  },
-  {
-    text: "Direct costs in a project include:",
-    options: ["Advertising and accounting", "Salaries of senior management above project level", "Labor, materials, equipment", "All of the above", "None of the above"],
-    correct: "Labor, materials, equipment"
-  },
-  {
-    text: "Extreme Programming is founded on which of the following values?",
-    options: ["Communication and respect", "Attire and documents", "Slack paths and gold plating", "Forming and storming", "Continuous integration"],
-    correct: "Communication and respect"
-  },
-  {
-    text: "According to George Bernard Shaw, the fallacy of communication is:",
-    options: ["It never occurs", "That it had occurred", "It always occurs effectively", "It's irrelevant to project management", "It's challenging to achieve"],
-    correct: "That it had occurred"
-  },
-  {
-    text: "Gantt charts are used for:",
-    options: ["Calculating direct costs", "Forward and backward pass scheduling", "Analyzing organizational culture", "Managing by wandering around", "None of the above"],
-    correct: "Forward and backward pass scheduling"
-  },
-  {
-    text: "May 1961, President JFK set an impossible deadline for:",
-    options: ["Implementing Agile project management", "Creating a new SIPOC diagram", "Landing a man on the moon", "Developing the PERT technique", "Norming"],
-    correct: "Landing a man on the moon"
-  },
-  {
-    text: "Parkinson’s principle states:",
-    options: ["Projects never complete on time", "Tasks will fill the time allotted to them", "All projects should use the Waterfall method", "Change is always resisted by managers", "Effective communication is key"],
-    correct: "Tasks will fill the time allotted to them"
-  },
-  {
-    text: "The PERT technique was developed by:",
-    options: ["NASA", "The military", "IBM", "Harvard University", "A team of engineers"],
-    correct: "The military"
-  },
-  {
-    text: "Risk in a project is defined as:",
-    options: ["A guaranteed outcome", "An uncertain event with a potential impact", "A certain event with no impact", "An event with no possibility of occurring", "An unexpected success"],
-    correct: "An uncertain event with a potential impact"
-  },
-  {
-    text: "The triple constraints in project management are:",
-    options: ["Culture, communication, collaboration", "Risk, opportunity, performance", "Cost, time, performance (scope)", "None of the above", "All of the above"],
-    correct: "Cost, time, performance (scope)"
-  },
-  {
-    text: "Which of the following is an example of scope creep?",
-    options: ["Adhering strictly to the initial project plan", "Adding features to the project without approval", "Completing the project ahead of schedule", "Reducing project costs without changing scope", "None of the above"],
-    correct: "Adding features to the project without approval"
-  },
-  {
-    text: "What does SMART in SMART objectives stand for?",
-    options: ["Specific, Measurable, Assignable, Realistic, Time-related", "Strategic, Measurable, Actionable, Relevant, Timely", "Specific, Measurable, Achievable, Reasonable, Time-bound", "Simple, Measurable, Attainable, Realistic, Timed", "Specific, Manageable, Aligned, Relevant, Time-bound"],
-    correct: "Specific, Measurable, Assignable, Realistic, Time-related"
-  },
-  {
-    text: "The 'blinding glimpse of the bleeding obvious' was stated by:",
-    options: ["George Bernard Shaw", "Paul Bennett", "Tom Bray", "JFK", "Norming"],
-    correct: "Paul Bennett"
-  },
-  {
-    text: "Which of the following is a direct overhead cost?",
-    options: ["Advertising", "Salaries of senior management above project level", "Specialized machinery", "None of the above", "All of the above"],
-    correct: "All of the above"
-  },
-  {
-    text: "Iterative and Incremental Development (IID) is ideal for projects where:",
-    options: ["Requirements are well-defined and stable", "Requirements need to be discovered", "The project scope is fixed", "The project has no deadlines", "Continuous improvement is not a priority"],
-    correct: "Requirements need to be discovered"
-  },
-  {
-    text: "In a Gantt chart, a forward pass calculates:",
-    options: ["The earliest start times for tasks", "The latest finish times for tasks", "The total project cost", "The critical path", "Resource utilization"],
-    correct: "The earliest start times for tasks"
-  },
-  {
-    text: "One common cause of scope creep is:",
-    options: ["Early user involvement", "Change control procedures", "Effective project management", "Underestimating project complexity", "Clear project goals"],
-    correct: "Underestimating project complexity"
-  },
-  {
-    text: "Which of the following is NOT a characteristic of an effective project manager?",
-    options: ["Direct and open communication", "Lack of adaptability", "Strong leadership skills", "Efficient resource management", "Ability to handle conflicts"],
-    correct: "Lack of adaptability"
-  },
-  {
-    text: "The Process Breakdown Structure (PBS) is commonly used in which type of projects?",
-    options: ["Agile projects", "Waterfall projects", "Process-oriented projects", "Risk management projects", "None of the above"],
-    correct: "Process-oriented projects"
-  },
-  {
-    text: "The 'fallacy of communication' refers to:",
-    options: ["Over-communication in projects", "Miscommunication or assuming communication has occurred", "Lack of communication plans", "Effective communication practices", "Communication breakdowns"],
-    correct: "Miscommunication or assuming communication has occurred"
-  },
-  {
-    text: "What does the acronym DMAIC stand for in the Six Sigma model?",
-    options: ["Define, Measure, Analyze, Implement, Close", "Data, Measurement, Analysis, Improvement, Control", "Design, Measure, Assess, Implement, Change", "Direct, Manage, Analyze, Improve, Collaborate", "None of the above"],
-    correct: "Data, Measurement, Analysis, Improvement, Control"
-  },
-  {
-    text: "In Earned Value Calculations, the formula for Cost Performance Index (CPI) is:",
-    options: ["BCWP/ACWP", "BCWP-ACWP", "BCWP/BCWS", "BCWP-BCWS", "None of the above"],
-    correct: "BCWP/ACWP"
-  },
-  {
-    text: "What is the main reason most managers resist change?",
-    options: ["Fear of failure", "Lack of resources", "Overconfidence in existing processes", "Desire for innovation", "Uncertainty in project goals"],
-    correct: "Fear of failure"
-  },
-  {
-    text: "The SIPOC diagram stands for:",
-    options: ["Supplier, Input, Process, Output, Customer", "Scope, Impact, Process, Output, Control", "Stakeholders, Inputs, Processes, Outputs, Controls", "Strategic, Input, Process, Output, Control", "None of the above"],
-    correct: "Supplier, Input, Process, Output, Customer"
-  },
-  {
-    text: "The Project Life Cycle typically includes which phases?",
-    options: ["Initiation, Execution, Closure", "Design, Testing, Implementation", "Define, Plan, Execute, Close", "Measure, Analyze, Improve, Control", "None of the above"],
-    correct: "Define, Plan, Execute, Close"
-  },
-  {
-    text: "Which of the following is a characteristic of Waterfall Methodology?",
-    options: ["Iterative development", "Continuous feedback", "Sequential phases", "Agile practices", "Dynamic project scope"],
-    correct: "Sequential phases"
-  },
-  {
-    text: "Trust in a project team is indicated by:",
-    options: ["Frequent conflicts", "Absence of feedback", "Effective communication", "Lack of transparency", "All of the above"],
-    correct: "Effective communication"
-  },
-  {
-    text: "What does the acronym MBWA stand for in project management?",
-    options: ["Managing Business With Agility", "Milestones and Baselines With Agility", "Measurement By Working Around", "Management By Walking Around", "None of the above"],
-    correct: "Management By Walking Around"
-  },
-  {
-    text: "What is the primary focus of Agile Project Management?",
-    options: ["Predictive planning", "Detailed documentation", "Responding to change", "Formalized processes", "All of the above"],
-    correct: "Responding to change"
-  },
-  {
-    text: "Which of the following is NOT a benefit of long-term relationships in projects?",
-    options: ["Reduced admin costs", "Efficient resource utilization", "Decreased innovation", "Improved communication", "Enhanced performance"],
-    correct: "Decreased innovation"
-  },
-  {
-    text: "The concept of a 'critical path' refers to:",
-    options: ["The shortest path in a project", "The longest path in a project", "The most critical tasks in a project", "The path with maximum resources", "The path with minimum risks"],
-    correct: "The longest path in a project"
-  },
-  {
-    text: "The Agile Manifesto values include:",
-    options: ["Comprehensive documentation", "Contract negotiation over collaboration", "Following a plan over responding to change", "Individuals and interactions over processes and tools", "None of the above"],
-    correct: "Individuals and interactions over processes and tools"
-  },
-  {
-    text: "What does 'Fail fast, fail cheap' imply in project management?",
-    options: ["Encouraging project failures", "Avoiding risk assessment", "Embracing rapid experimentation and learning", "Reducing project scope", "Allowing scope creep"],
-    correct: "Embracing rapid experimentation and learning"
-  },
-  {
-    text: "Which of the following is NOT a phase gate process in project management?",
-    options: ["Defining project goals", "Executing project tasks", "Analyzing project risks", "Closing out a project", "Initiating a project"],
-    correct: "Initiating a project"
-  },
-  {
-    text: "The Cost Variance (CV) in Earned Value Management is calculated as:",
-    options: ["BCWP/ACWP", "BCWP-ACWP", "BCWP/BCWS", "BCWP-BCWS", "None of the above"],
-    correct: "BCWP-ACWP"
-  },
-  {
-    text: "Which statement best describes the role of a project manager?",
-    options: ["Managing repetitive tasks within the organization", "Executing tasks without considering project goals", "Leading temporary and unique projects independently", "Handling operational tasks in an ongoing manner", "None of the above"],
-    correct: "Leading temporary and unique projects independently"
-  },
-  {
-    text: "What does the acronym DMAIC stand for in Six Sigma methodology?",
-    options: ["Define, Measure, Analyze, Improve, Control", "Design, Measure, Analyze, Implement, Control", "Develop, Manage, Analyze, Implement, Close", "Direct, Measure, Analyze, Improve, Collaborate", "None of the above"],
-    correct: "Define, Measure, Analyze, Improve, Control"
-  },
-  {
-    text: "Which of the following is a characteristic of an effective project team?",
-    options: ["Limited communication", "High turnover rate", "Lack of collaboration", "Clear goals and roles", "Minimal feedback"],
-    correct: "Clear goals and roles"
-  },
-  {
-    text: "What is the primary goal of Crashing a project?",
-    options: ["Increasing project costs", "Extending project schedules", "Shortening project schedules", "Expanding project scope", "None of the above"],
-    correct: "Shortening project schedules"
-  },
-  {
-    text: "The Concept of 'Triple Constraints' in project management refers to:",
-    options: ["Cost, time, and quality", "Risk, resources, and stakeholders", "Communication, collaboration, and culture", "Scope, schedule, and budget", "None of the above"],
-    correct: "Scope, schedule, and budget"
-  },
-  {
-    text: "The Agile Manifesto emphasizes:",
-    options: ["Communication, simplicity, feedback, courage, respect", "Encouraging project failures", "The earliest finish times for tasks", "False consensus effect", "1940s"],
-    correct: "Communication, simplicity, feedback, courage, respect"
-  },
-  {
-    text: "What does 'Fail fast, fail cheap' encourage in Agile practices?",
-    options: ["Encouraging project failures", "Avoiding risk assessment", "Rapid prototyping and iteration", "Reducing project scope", "All of the above"],
-    correct: "Rapid prototyping and iteration"
-  },
-  {
-    text: "In a Gantt chart, a backward pass calculates:",
-    options: ["The earliest start times for tasks", "The latest finish times for tasks", "The total project cost", "The critical path", "None of the above"],
-    correct: "The latest finish times for tasks"
-  },
-  {
-    text: "The 'false consensus effect' is:",
-    options: ["A project management technique", "A cognitive bias", "A risk management tool", "A communication strategy", "None of the above"],
-    correct: "A cognitive bias"
-  },
-  {
-    text: "The PERT technique was developed in the:",
-    options: ["1940s", "1950s", "1960s", "1970s", "1980s"],
-    correct: "1950s"
-  },
-  {
-    text: "A SIPOC diagram is used to understand:",
-    options: ["Inputs and outputs in a process", "The critical path of a project", "The scope of a project", "Resource allocation", "None of the above"],
-    correct: "Inputs and outputs in a process"
-  },
-  {
-    text: "Kanban is a method used to:",
-    options: ["Manage project risks", "Develop software", "Prevent overproduction", "Calculate earned value", "None of the above"],
-    correct: "Prevent overproduction"
-  },
-  {
-    text: "Which document is central to Agile methodologies?",
-    options: ["The Agile Manifesto", "The Project Charter", "The Business Case", "The Scope Statement", "None of the above"],
-    correct: "The Agile Manifesto"
-  },
-  {
-    text: "A contingency reserve is:",
-    options: ["An unexpected project cost", "A planned amount for unforeseen work", "A bonus for project completion", "A penalty for project delays", "None of the above"],
-    correct: "A planned amount for unforeseen work"
-  },
-  {
-    text: "Which of the following is NOT a value of the Agile Manifesto?",
-    options: ["Individuals and interactions", "Working software", "Customer collaboration", "Following a plan", "Responding to change"],
-    correct: "Following a plan"
-  },
-  {
-    text: "Which of the following is NOT a part of the project management process?",
-    options: ["Initiating", "Planning", "Executing", "Monitoring and Controlling", "None of the above"],
-    correct: "None of the above"
-  }
-  
-];
-
-
-function createQuestionElement(question, index) {
-  const questionDiv = document.createElement('div');
-  questionDiv.classList.add('question');
-  questionDiv.innerHTML = `
-    <div class="question-header">Question ${index + 1}: ${question.text}</div>
-    ${question.options.map((option, i) => `
-      <label class="answer">
-        <input type="radio" name="question${index}" value="${option}">
-        ${String.fromCharCode(65 + i)}) ${option}
-      </label>
-    `).join('')}
-  `;
-  return questionDiv;
-}
-
-questions.forEach((question, index) => {
-  document.getElementById('exam-form').appendChild(createQuestionElement(question, index));
-});
-
-function checkAnswers() {
-  let score = 0;
-  questions.forEach((question, index) => {
-    const selected = document.querySelector(`input[name="question${index}"]:checked`);
-    const labels = document.querySelectorAll(`input[name="question${index}"]`);
-    labels.forEach(label => {
-      if (label.value === question.correct) {
-        label.parentElement.classList.add('correct');
-      } else {
-        label.parentElement.classList.add('incorrect');
-      }
-    });
-    if (selected && selected.value === question.correct) {
-      score++;
-    }
-  });
-  alert('You got ' + score + ' out of ' + questions.length + ' correct!');
-}
-</script>
-
+    <div class="button-container">
+        <a href="https://your-confluence-page-link-here" class="custom-button">
+            Go to Confluence Page
+        </a>
+    </div>
 </body>
 </html>
