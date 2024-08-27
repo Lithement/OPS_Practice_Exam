@@ -3,44 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Button</title>
+    <title>Iframe Slideshow</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
         }
-
-        .button-container {
-            text-align: center;
+        .slideshow-container {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            border-radius: 8px;
         }
-
-        .custom-button {
-            background-color: #0056b3;
-            color: white;
-            padding: 15px 30px;
+        iframe {
+            width: 100%;
+            height: 100%;
             border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
         }
-
-        .custom-button:hover {
-            background-color: #004494;
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev {
+            left: 0;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
         }
     </style>
 </head>
 <body>
-    <div class="button-container">
-        <a href="https://your-confluence-page-link-here" class="custom-button">
-            Go to Confluence Page
-        </a>
-    </div>
+
+<div class="slideshow-container">
+    <iframe id="slideFrame" src="https://www.example.com"></iframe>
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+</div>
+
+<script>
+    var slideIndex = 0;
+    var slides = [
+        "https://www.example.com",
+        "https://www.another-example.com",
+        "https://www.yet-another-example.com"
+    ];
+
+    function changeSlide(direction) {
+        slideIndex += direction;
+        if (slideIndex >= slides.length) {
+            slideIndex = 0;
+        } else if (slideIndex < 0) {
+            slideIndex = slides.length - 1;
+        }
+        document.getElementById("slideFrame").src = slides[slideIndex];
+    }
+</script>
+
 </body>
 </html>
